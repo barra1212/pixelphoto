@@ -1,53 +1,13 @@
-/*body {*/
-/*    background-color: #FFFFFF;*/
-/*}*/
-
-#coffeenav {
-    background: url("/static/media/header-img.jpg") 50% 0 no-repeat;
-    min-height: 500px;
-    padding: 0;   
-}
-
-.bg-primary {
-    background-color: rgba(68, 68, 68, 0.9) !important;
-}
-
-.white-opaque {
-    background-color: rgba(255, 255, 255, 0.75);
-    border-radius: 15px;
-    padding: 25px;
-    margin: 50px auto;
-}
-
-.page-footer {
-    background-color: #222222;
-    color: #FFFFFF;
-}
-
-.alert,.alert-success {
-    background-color: rgba(149, 193, 31, 0.9);
-    border-radius: 0px;
-}
-
-
-/* CUSTOM STYLING FOR HEADINGS */
-.home-heading {
-    color: #FFFFFF;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    text-shadow:1px 1px 10px #000000;
-}
-
-h1,h2,h3,h4,h5,h6 {
-    text-align: center;
-    color: #444444;
-}
-
-h4 {
-    color: #95c11f;
-}
-
 /* BELOW FROM LESSON */
+
+.icon-bar {
+    background-color: #fff;
+}
+
+.accountform {
+    padding-top: 20px;
+}
+
 .badge {
     padding-left: 9px;
     padding-right: 9px;
@@ -92,4 +52,52 @@ caption p {
 
 .product-description {
     min-height: 40px;
+}
+
+
+/* MY STYLES */
+
+#coffeenav {
+    background: url("/static/media/header-img.jpg") 50% 0 no-repeat;
+    min-height: 500px;
+    padding: 0;   
+}
+
+.bg-primary {
+    background-color: rgba(68, 68, 68, 0.9) !important;
+}
+
+.white-opaque {
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 50px auto;
+}
+
+.page-footer {
+    background-color: #222222;
+    color: #FFFFFF;
+}
+
+.alert,.alert-success {
+    background-color: rgba(149, 193, 31, 0.9);
+    border-radius: 0px;
+}
+
+
+ /*CUSTOM STYLING FOR HEADINGS */
+.home-heading {
+    color: #FFFFFF;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-shadow:1px 1px 10px #000000;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    text-align: center;
+    color: #444444;
+}
+
+h4 {
+    color: #95c11f;
 }
