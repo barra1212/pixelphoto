@@ -22,11 +22,11 @@
 }
 
 .product {
-    background-size: contain;
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    min-height: 250px;
     margin: 0 auto;
 }
 
@@ -37,16 +37,12 @@ caption p {
 .row.row-flex {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 30px;
-}
-
-.panel-default {
-    border-color: transparent;
-    padding: 0 10px;
+    margin-top: 20px;
 }
 
 .panel-body {
     height: 100%;
+    padding: 20px;
     border: 1px solid #ddd;
 }
 
@@ -57,14 +53,9 @@ caption p {
 
 /* MY STYLES */
 
-#coffeenav {
-    background: url("/static/media/header-img.jpg") 50% 0 no-repeat;
-    min-height: 500px;
-    padding: 0;   
-}
-
-.bg-primary {
-    background-color: rgba(68, 68, 68, 0.9) !important;
+.navbar {
+    padding: 10px 25px 15px 25px;
+    margin-bottom: 20px;
 }
 
 .white-opaque {
@@ -98,6 +89,11 @@ h1,h2,h3,h4,h5,h6 {
     color: #444444;
 }
 
+h2 {
+    text-align: left;
+}
+
 h4 {
     color: #95c11f;
+    margin-top: 10px;
 }
