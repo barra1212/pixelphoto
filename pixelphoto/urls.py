@@ -16,11 +16,20 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from users import urls as urls_users
-# from django.conf.urls.static import static
-# from django.views.generic.base import TemplateView
+from django.conf.urls.static import static
+from django.views.generic.base import TemplateView
+from products import urls as urls_products
+from products.views import all_products
+from django.views import static
+from .settings import MEDIA_ROOT
 
 urlpatterns = [
-    # url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include(urls_users)),
+    url(r'^products/', include(urls_products)),
+    # url(r'^cart/', include(urls_cart)),
+    # url(r'^checkout/', include(urls_checkout)),
+    # url(r'^search/', include(urls_search)),
+    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]
