@@ -1,0 +1,15 @@
+Create templates for
+
+password_reset_email.html *
+password_reset_done.html *
+password_reset_complete.html *
+and
+password_reset_confirm.html
+
+The password_reset_confirm.html template will require a form
+that the user will input their new password into.
+
+This form can be accessed using {{ form }} and contains password1 and password2 fields.
+
+
+These files will need to be added to the templates/registration directory
