@@ -7,19 +7,21 @@
             <div class="panel-body">
                 <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>
 
-                <h4>{{ product.name }}</h4>
+                <a href="{{ product.image.url }}">
+                    <h4>{{ product.name }}</h4>
+                </a>
                 <p class="product-description">{{ product.description }}</p>
                 <h2>€{{ product.price }}</h2>
 
                 <form method="post" action="{% url 'add_to_cart' product.id %}">
                     {% csrf_token %}
                     <div class="input-group">
+                        <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit">Download</button>
+                            <button class="btn btn-success" type="submit">Add</button>
                         </span>
                     </div>
                 </form>
-
             </div>
         </div>
     {% endfor %}

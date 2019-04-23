@@ -46,6 +46,10 @@ caption p {
     border: 1px solid #ddd;
 }
 
+.panel {
+    margin-bottom: 20px;
+}
+
 .product-description {
     min-height: 40px;
 }

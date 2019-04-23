@@ -11,7 +11,9 @@
         <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>
         
         <div class="caption">
-            <h4>{{ item.product.name }}</h4>
+            <a href="{{ product.image.url }}">
+                <h4>{{ product.name }}</h4>
+            </a>
             <p class="product-description">{{ item.product.description }}</p>
             <p>{{ item.product.price }}</p>
             <p>
