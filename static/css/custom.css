@@ -1,5 +1,9 @@
 /* BELOW FROM LESSON */
 
+body {
+    margin-bottom: 120px;
+}
+
 .icon-bar {
     background-color: #fff;
 }
@@ -108,4 +112,10 @@ h2 {
 h4 {
     color: #95c11f;
     margin-top: 10px;
+}
+
+/* SOCIAL ICON STYLING */
+.social {
+    padding: 10px;
+    height: 50px;
 }

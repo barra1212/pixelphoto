@@ -49,7 +49,7 @@ def login(request):
 def profile(request):
     """A view that displays the profile page of a logged in user"""
     return render(request, 'profile.html')
-
+    
 
 def register(request):
     """A view that manages the registration form"""
