@@ -1,6 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+<div class="row search">
+  <div class="col-md-12">
+    <form class="row">
+      <div class="col-12 col-sm pr-sm-0">
+        <input class="form-control" type="search" placeholder="Search Images" aria-label="Search">
+      </div>
+      <div class="col-12 col-sm-auto pl-sm-0">
+        <button class="btn btn-success" type="submit">Search</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <div class="row row-flex">
     {% for product in products %}
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 display panel">

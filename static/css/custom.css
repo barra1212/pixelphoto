@@ -59,7 +59,15 @@ caption p {
 
 .navbar {
     padding: 10px 25px 15px 25px;
+}
+
+.search {
+    margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.card {
+    margin: 10px;
 }
 
 .white-opaque {

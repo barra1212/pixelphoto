@@ -36,7 +36,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{% url 'products' %}" role="button" aria-haspopup="true" aria-expanded="false">Images</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'products' %}">Products</a>
+                        <a class="dropdown-item" href="{% url 'products' %}">All Images</a>
                         <a class="dropdown-item" href="#">Men</a>
                         <a class="dropdown-item" href="#">Women</a>
                         <a class="dropdown-item" href="#">Sports</a>
@@ -73,20 +73,6 @@
     </div>
     {% endif %}
     
-    <div class="row">
-        <div class="col-md-12">
-            <form class="row">
-                <div class="col-12 col-sm pr-sm-0">
-                    <input class="form-control" type="search" placeholder="Search Images" aria-label="Search">
-                </div>
-                <div class="col-12 col-sm-auto pl-sm-0">
-                    <button class="btn btn-success" type="submit">Search</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
     {% block content %}
     {% endblock %}
 
