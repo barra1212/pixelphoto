@@ -9,23 +9,24 @@
         <div class="panel-body">
             <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>
 
-                <a href="{{ product.image.url }}"><h4>{{ product.name }}</h4></a>
-                
+                <a href="{{ item.product.image.url }}">
+                    <h4>{{ item.product.name }}</h4>
+                </a>
                 <p class="product-description">{{ item.product.description }}</p>
+                <h2>&euro;</i>{{ item.product.price }}</h2>
                 
-                <h2>€{{ item.product.price }}</h2>
-                
-                <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
+                <form method="post" action="{% url 'adjust_cart' item.id %}">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="exampleInputAmount" class="sr-only">New Qty</label>
+                        <!--<label for="exampleInputAmount" class="sr-only">New Qty</label>-->
                         <div class="input-group">
-                            <div class="input-group-addon">Qty</div>
-                            <input name="quantity" type="number" min="0" max="999" class="form-control">
-                            <div class="input-group-addon">{{item.quantity}}</div>
+                            <!--<div class="input-group-addon">Qty</div>-->
+                            <input name="quantity" type="number" value="0" style="display:none;">
+                            <!--<input name="quantity" type="number" min="0" max="999" class="form-control">-->
+                            <!--<div class="input-group-addon">{{item.quantity}}</div>-->
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Amend</button>
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-times-circle"></i>&nbsp;Remove from Cart</button>
                 </form>
             </div>
         </div>
@@ -34,7 +35,7 @@
 
 <div class="container">
     <div class="row">
-        <h4>Total €{{ total }}</h4>
+        <h4>Total &euro;{{ total }}</h4>
     </div>
     <div class="row">
         <a href="{% url 'checkout' %}" class="btn btn-success" role="button">Checkout</a>

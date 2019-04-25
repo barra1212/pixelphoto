@@ -26,12 +26,19 @@ body {
 }
 
 .product {
+    transition: all .2s ease-in-out;
+    transform: scale(1);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     width: 100%;
     min-height: 250px;
     margin: 0 auto;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    background-image: url('{{ MEDIA_URL }}{{ product.image }}');
 }
 
 caption p {
@@ -118,4 +125,16 @@ h4 {
 .social {
     padding: 10px;
     height: 50px;
+}
+
+
+/* MEDIA QUERIES */
+
+/* Correct 3 x home category sections to stay centred on smallest of screens */
+@media (min-width: 100px) {
+    .justify-content-sm-center {
+        -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+        justify-content: center !important;
+    }
 }
