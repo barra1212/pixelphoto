@@ -13,25 +13,27 @@
 {% endblock head_js %}
 
 {% block content %}
+
 <div class="row row-flex">
     {% for item in cart_items %}
-        <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
-            <div class="panel-body">
-                <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 display panel">
+        <div class="panel-body">
+            <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>
 
-                <div class="caption">
-                    <h3>{{ item.product.name }}</h3>
-                    <p class="product-description">{{ item.product.description }}</p>
-                    <p>{{ item.quantity }}</p>
-                    <p>&euro;{{ item.product.price }}</p>
-                </div>
-            </div>
+            <a href="{{ item.product.image.url }}">
+                <h4>{{ item.product.name }}</h4>
+            </a>
+            <p class="product-description">{{ item.product.description }}</p>
+            <h5>&euro;</i>{{ item.product.price }}</h5>
         </div>
+    </div>
     {% endfor %}
 </div>
-<div class="row">
-    <p>Total</p>
-    <p><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
+
+<div class="container">
+    <div class="row">
+        <h4>Total &euro;{{ total }}</h4>
+    </div>
 </div>
 
 <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
@@ -41,17 +43,21 @@
         <div id="alert-message block-message error" id="stripe-error-message"></div>
     </div>
 
-    <div class="form-group col-md-6">
-        {{ order_form | as_bootstrap }}
-    </div>
-
-    <div class="form-group col-md-6">
-        {{ payment_form | as_bootstrap }}
+    <div class="container">
+      <div class="row">
+        <div class="form-group col">
+            {{ order_form | as_bootstrap }}
+        </div>
+        <div class="form-group col">
+            {{ payment_form | as_bootstrap }}
+        </div>
+      </div>
     </div>
 
     {% csrf_token %}
     <div class="form-group col-md-12">
-        <input class=" btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+        <input class=" btn btn-success" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
     </div>
 </form>
+
 {% endblock %}

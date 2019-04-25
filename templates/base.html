@@ -16,21 +16,23 @@
 </head>
 
 <body>
-    <div class="container" id="coffeenav">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<div class="container-fluid container-fluid-margin">
+
+    <!-- NAVBAR -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
         <div class="d-flex flex-grow-1">
             <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
             <a class="navbar-brand" href="/">
                     <img src="{% static 'media/pixel-photo-logo.svg' %}" height="40" class="d-inline-block align-top" alt="">
                 </a>
             <div class="w-100 text-right">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar7">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
         </div>
-        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
             <ul class="navbar-nav ml-auto flex-nowrap">
                 <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                 <li class="nav-item dropdown">
@@ -43,7 +45,7 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Members Area</a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Customer Area</a>
                     <div class="dropdown-menu">
                         {% if user.is_authenticated %}
                         <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
@@ -64,7 +66,12 @@
             </ul>
         </div>
     </nav>
-            
+
+</div>
+
+<div class="container">
+
+    <!-- DJANGO MESSAGES -->
     {% if messages %}
     <div class="alert alert-success">
         <div class="messages">
@@ -73,10 +80,11 @@
     </div>
     {% endif %}
     
+    <!-- BLOCK -->
     {% block content %}
     {% endblock %}
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="page-footer fixed-bottom">
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3">© 2019 Barry Cunningham<br/>
@@ -86,13 +94,20 @@
         </div>
         <!-- Copyright -->
     </footer>
-    <!-- Footer -->
 
 </div>
 
 </body>
 
+    <!-- JAVASCRIPT -->
     <script src="https://code.jquery.com/jquery-3.4.0.min.js" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <!-- BOOTSTRAP TOAST -->
+    <script>
+        $(document).ready(function(){
+            $('.toast').toast('show');
+        });
+    </script>
 
 </html>

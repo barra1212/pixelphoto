@@ -3,6 +3,17 @@
 
 {% block content %}
 
+<!-- BOOSTRAP TOAST BUTTON FOR PHOTOGRAPHERS -->
+<div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+  <div class="toast-header">
+    <a href="#"><h5 style="color: #FFFFFF;">ATTENTION PHOTOGRAPHERS!<br/>Sell your photos online!</h5></a>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true"><i class="fas fa-times-circle"></i></span>
+    </button>
+  </div>
+</div>
+
+<!-- BOOSTRAP CAROUSEL -->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -30,6 +41,7 @@
   </a>
 </div>
 
+<!-- SEARCH BAR -->
 <div class="row search">
   <div class="col-md-8 offset-md-2">
     <form class="row" action="{% url 'search' %}" method="get">
@@ -43,12 +55,13 @@
   </div>
 </div>
 
+<!-- HOME TEXT HEADLINES -->
 <h1>Premium Stock Photography</h1>
 <h3>at a not so premium price!</h3>
 <h3>All images only €1.00</h3>
 <h4>Suitable to use everywhere ✓ Commercial Use ✓ Unlimited Reproductions ✓ No attribution required ✓</h4>
 
-
+<!-- 3 x CATEGORY BOXES -->
 <div class="row justify-content-sm-center search">
   <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="{% static 'media/slide-men.jpg' %}" alt="Card image cap">

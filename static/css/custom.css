@@ -2,15 +2,37 @@
 
 body {
    padding-bottom: 150px;
+   margin: 0px;
 }
 
-.icon-bar {
-    background-color: #fff;
+.container-fluid-margin {
+	margin: 0;
+	padding: 0;
 }
 
-.accountform {
-    padding-top: 20px;
+.toast {
+    border: none;
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%, 0px);
+    z-index: 9999;
 }
+
+.toast-header {
+    background-color: #95c11f;
+    min-width: 330px;
+    padding-top: 12px;
+    min-height: 50px;
+    color: #FFFFFF;
+}
+
+/*.icon-bar {*/
+/*    background-color: #fff;*/
+/*}*/
+
+/*.accountform {*/
+/*    padding-top: 20px;*/
+/*}*/
 
 .badge {
     padding-left: 9px;
@@ -20,10 +42,10 @@ body {
     border-radius: 9px;
 }
 
-.label-warning[href],
-.badge-warning[href] {
-    background-color: #c67605;
-}
+/*.label-warning[href],*/
+/*.badge-warning[href] {*/
+/*    background-color: #c67605;*/
+/*}*/
 
 .product {
     transition: all .2s ease-in-out;
@@ -96,17 +118,11 @@ caption p {
 .alert,.alert-success {
     background-color: rgba(149, 193, 31, 0.9);
     border-radius: 0px;
+    margin: 0;
 }
 
 
- /*CUSTOM STYLING FOR HEADINGS */
-.home-heading {
-    color: #FFFFFF;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    text-shadow:1px 1px 10px #000000;
-}
-
+/*CUSTOM STYLING FOR HEADINGS */
 h1,h2,h3,h4,h5,h6 {
     text-align: center;
     color: #444444;
@@ -138,3 +154,14 @@ h4 {
         justify-content: center !important;
     }
 }
+
+/* SHRINK NAVBAR ELEMENTS WIDTH ON LARGE SCREENS */
+@media only screen and (min-width: 1200px) {
+    .navbar-brand {
+        margin-left: 40%;
+    }
+    #myNavbar > ul {
+        margin-right: 40%;
+    }
+}
+
