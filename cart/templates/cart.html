@@ -9,12 +9,12 @@
         <div class="panel-body">
             <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>
 
-            <div class="caption">
-                <a href="{{ product.image.url }}">
-                    <h4>{{ product.name }}</h4>
-                </a>
+                <a href="{{ product.image.url }}"><h4>{{ product.name }}</h4></a>
+                
                 <p class="product-description">{{ item.product.description }}</p>
+                
                 <h2>€{{ item.product.price }}</h2>
+                
                 <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
                     {% csrf_token %}
                     <div class="form-group">
@@ -25,18 +25,20 @@
                             <div class="input-group-addon">{{item.quantity}}</div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Amend</button>
+                    <button type="submit" class="btn btn-primary">Amend</button>
                 </form>
             </div>
         </div>
-    </div>
     {% endfor %}
 </div>
 
-<div class="row">
-    <p>Total</p>
-    <p><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
-    <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+<div class="container">
+    <div class="row">
+        <h4>Total €{{ total }}</h4>
+    </div>
+    <div class="row">
+        <a href="{% url 'checkout' %}" class="btn btn-success" role="button">Checkout</a>
+    </div>
 </div>
 
 {% endblock %}
