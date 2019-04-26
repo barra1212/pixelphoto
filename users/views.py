@@ -5,7 +5,6 @@ from .forms import UserLoginForm, UserRegistrationForm
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 
-
 # Create your views here.
 def index(request):
     """A view that displays the index page"""

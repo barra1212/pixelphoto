@@ -8,6 +8,8 @@ from django.utils import timezone
 from products.models import Product
 import stripe
 
+from django.core.mail import send_mail
+
 # Create your views here.
 stripe.api_key = settings.STRIPE_SECRET
 
@@ -21,7 +23,6 @@ def checkout(request):
             order = order_form.save(commit=False)
             order.date = timezone.now()
             order.save()
-
             cart = request.session.get('cart', {})
             total = 0
             for id, quantity in cart.items():
@@ -46,6 +47,14 @@ def checkout(request):
             
             if customer.paid:
                 messages.error(request, "You have successfully paid")
+
+                #send email to user after successful checkout
+                subject = 'Thank you for your order'
+                message = 'Welcome blah blah blah'
+                from_email = settings.EMAIL_HOST_USER
+                to_list = [request.user.email,settings.EMAIL_HOST_USER]
+                send_mail(subject,message,from_email,to_list,fail_silently=True)
+
                 request.session['cart'] = {}
                 return redirect(reverse('products'))
             else:
