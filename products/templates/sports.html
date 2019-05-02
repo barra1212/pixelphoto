@@ -41,12 +41,32 @@
                   <div class="input-group">
                     <input name="quantity" type="number" value="1" style="display:none;">
                     <!--<input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">-->
-                    <span class="input-group-btn">
-                      <button class="btn btn-success" type="submit"><i class="fas fa-cart-plus"></i>&nbsp;Add to Cart</button>
-                    </span>
+                    <!--<span class="input-group-btn">-->
+                      <button class="btn btn-block btn-success" type="submit"><i class="fas fa-cart-plus"></i>&nbsp;Add to Cart</button>
+                    <!--</span>-->
                   </div>
                 </form>
                 
+                  {% if user.is_authenticated %}
+                  <div class="row justify-content">
+                    <div class="col">
+                      <form method="post" action="{% url 'upvote' product.id %}">
+                        {% csrf_token %}
+                        <button class="btn btn-block btn-primary" type="submit"><i class="fas fa-thumbs-up"></i></button>
+                      </form>
+                    </div>
+                    <div class="col">
+                        <h4>{{ product.upvotes }}</h4>
+                    </div>
+                    <div class="col">
+                      <form method="post" action="{% url 'downvote' product.id %}">
+                        {% csrf_token %}
+                        <button class="btn btn-block btn-primary" type="submit"><i class="fas fa-thumbs-down"></i></button>
+                      </form>
+                    </div>
+                  </div>
+                  {% endif %}
+
             </div>
         </div>
     {% endfor %}

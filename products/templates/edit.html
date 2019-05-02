@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--Allow users to edit Image description for better searchability-->
+<form action="/products/edit/" method="post" action="." class="form horizontal well">{% csrf_token %}
+    {{ form.as_p }}
+    <imput type="submit" class="btn btn-inverse" value="Aktualizuj">
+</form>
+{% endblock %}

@@ -24,6 +24,8 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='images')
     originalimage = models.ImageField(upload_to='originalimages')
-
+    upvotes = models.IntegerField(default=0)
+    class Meta:
+        ordering = ['-upvotes']
     def __str__(self):
         return self.name
