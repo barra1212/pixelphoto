@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row search">
+  <div class="col-md-8 offset-md-2">
+    <form class="row" action="{% url 'search' %}" method="get">
+      <div class="input-group col-12 col-sm pr-sm-0">
+        <input type="text" name="q" class="form-control" placeholder="Search Images" aria-label="Search">
+        <span class="input-group-btn">
+          <button class="btn btn-success" type="submit"><i class="fas fa-search"></i>&nbsp;Search</button>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row search">
+  <div class="col-md-12 text-center">
+    <a href="{% url 'products' %}">All Images</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="{% url 'products_list_men' %}">Men</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="{% url 'products_list_sports' %}">Sports</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="{% url 'products_list_women' %}">Women</a>
+  </div>
+</div>
+<h3>Your Search Results</h3>
+
+<div class="row row-flex">
+    {% for product in products %}
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 display panel">
+            <div class="panel-body">
+                <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>
+
+                <a href="{{ product.image.url }}">
+                  <h4>{{ product.name }}</h4>
+                </a>
+                <p class="product-description">
+                  {{ product.description }}
+                </p>
+
+                <h2>&euro;</i>{{ product.price }}</h2>
+                
+                <!--<div class="row text-center">-->
+                
+                  <form method="post" action="{% url 'add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                      <input name="quantity" type="number" value="1" style="display:none;">
+                      <!--<input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">-->
+                      <!--<span class="input-group-btn">-->
+                        <button class="btn btn-block btn-success" type="submit"><i class="fas fa-cart-plus"></i>&nbsp;Add to Cart</button>
+                      <!--</span>-->
+                    </div>
+                  </form>
+
+                  {% if user.is_authenticated %}
+                  <div class="row justify-content">
+                    <div class="col">
+                      <form method="post" action="{% url 'upvote' product.id %}">
+                        {% csrf_token %}
+                        <button class="btn btn-block btn-primary" type="submit"><i class="fas fa-thumbs-up"></i></button>
+                      </form>
+                    </div>
+                    <div class="col">
+                        <h4>{{ product.upvotes }}</h4>
+                    </div>
+                    <div class="col">
+                      <form method="post" action="{% url 'downvote' product.id %}">
+                        {% csrf_token %}
+                        <button class="btn btn-block btn-primary" type="submit"><i class="fas fa-thumbs-down"></i></button>
+                      </form>
+                    </div>
+                  </div>
+                  {% endif %}
+
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
