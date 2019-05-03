@@ -26,6 +26,6 @@ class Product(models.Model):
     originalimage = models.ImageField(upload_to='originalimages')
     upvotes = models.IntegerField(default=0)
     class Meta:
-        ordering = ['-upvotes']
+        ordering = ['-upvotes', 'name']
     def __str__(self):
         return self.name
