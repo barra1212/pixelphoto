@@ -22,6 +22,8 @@ EMAIL_HOST = EMAIL_HOST
 EMAIL_HOST_USER = EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
 EMAIL_PORT = EMAIL_PORT
+# EMAIL BACKEND FOR CONTACT PAGE
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -167,5 +169,3 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 
-# EMAIL BACKEND FOR CONTACT PAGE
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

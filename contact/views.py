@@ -13,9 +13,18 @@ def contact_us(request):
 
             sender_name = form.cleaned_data['name']
             sender_email = form.cleaned_data['email']
-            message = "{0} has sent you a new message:\n\n{1}".format(sender_name, form.cleaned_data['message'])
-            send_mail('New Enquiry', message, sender_email, [settings.EMAIL_HOST_USER])
-            messages.error(request, "Thanks for contacting us!")
+            message = form.cleaned_data['message']
+            
+            send_mail(
+                "New message received from: " + sender_name,
+                "Message contents: " + message,
+                sender_email,
+                [sender_email, settings.EMAIL_HOST_USER],
+                fail_silently=False,
+            )
+            
+            # send_mail(sender_name, sender_email, message, [settings.EMAIL_HOST_USER])
+            messages.error(request, "Thanks for contacting us, we’ll be back in touch ASAP!")
 
     else:
         form = ContactForm()
