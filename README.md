@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.org/barra1212/pixelphoto.svg?branch=master)](https://travis-ci.org/barra1212/pixelphoto)
 
-
      ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
     '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
     |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 

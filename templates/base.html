@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pixel Photo</title>
+    <title>{% block title %}Pixel Photo{% endblock %}</title>
     <!--CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
@@ -64,8 +64,7 @@
                     <label class="badge badge-success"><i class="fas fa-shopping-cart"></i>&nbsp;{{ product_count }}</label>
                 </a></li>
                 {% endif %}
-                </li>
-                <li class="nav-item"><a class="nav-link" href="/">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact_us' %}">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -103,10 +102,10 @@
 </body>
 
     <!-- BOOTSTRAP TOAST -->
-    <script>
-        $(document).ready(function(){
-            $('.toast').toast('show');
-        });
-    </script>
+    <!--<script>-->
+    <!--    $(document).ready(function(){-->
+    <!--        $('.toast').toast('show');-->
+    <!--    });-->
+    <!--</script>-->
 
 </html>

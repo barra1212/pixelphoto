@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'cart',
     'search',
     'checkout',
+    'contact',
 ]
 
 MIDDLEWARE = [
@@ -166,3 +167,5 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 
+# EMAIL BACKEND FOR CONTACT PAGE
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

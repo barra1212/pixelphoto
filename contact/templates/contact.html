@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Pixel Photo | Contact{% endblock %}
+
+{% load bootstrap_tags %}
+
+{% block content %}
+
+<div class="col-md-6 offset-md-3 white-opaque">
+    <form method="post" action="{% url 'contact_us' %}">
+        <fieldset class="form-group">
+            <legend>Contact Us</legend>
+            {% csrf_token %}
+            {{ form | as_bootstrap }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
+    </form>
+</div>
+
+{% endblock %}
