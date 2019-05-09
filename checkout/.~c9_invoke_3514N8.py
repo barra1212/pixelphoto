@@ -47,26 +47,18 @@ def checkout(request):
                 messages.error(request, "Your card was declined!")
             
             if customer.paid:
-                messages.error(request, "You have successfully paid!\nYour high resolution images have been emailed to you.")
+                messages.error(request, "You have successfully paid")
 
-                for id in cart.items():
-                    print(id)
+                # Email to customer including the high resolution file of the image they purchased as attachment
+                email = EmailMessage()
+                email.subject = "New Image " + product.name + " purchased from Pixel Photo"
+                email.body = "The high resolution image " + product.name + " you bought is attached to this email.\nThanks for your order, see you next time.\nPIXEL Photo"
+                email.from_email = settings.EMAIL_HOST_USER
+                email.to = [request.user.email]
+                for id, quantity in cart.items():
+                email.attach_file("media/" + str(product.originalimage))
+                email.send()
 
-                    # Credit to JoWings Code Institute
-                    id_dict = {'id':id[0], 'quantity':id[1]}
-                    print(id_dict)
-                    product = get_object_or_404(Product, pk=id_dict["id"])
-                    # Credit to JoWings Code Institute
-
-                    # Email to customer including the high resolution file of the image they purchased as attachment
-                    email = EmailMessage()
-                    email.subject = "New Image " + product.name + " purchased from Pixel Photo"
-                    email.body = "The high resolution image " + product.name + " you bought is attached to this email.\nThanks for your order, see you next time.\nPIXEL Photo"
-                    email.from_email = settings.EMAIL_HOST_USER
-                    email.to = [request.user.email]
-                    email.attach_file("media/" + str(product.originalimage))
-                    email.send()
-                
                 request.session['cart'] = {}
                 return redirect(reverse('products'))
             else:
