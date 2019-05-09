@@ -11,14 +11,17 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import env
+
+if os.path.exists('env.py'):
+    import env
+
 import dj_database_url
 
 
-# GMAIL    
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+# GMAIL
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
