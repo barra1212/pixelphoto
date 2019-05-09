@@ -112,7 +112,7 @@ Check out version control for commit steps during development.
 
 `heroku ps:scale web=1` - Start dynos, thus running the App
 
-[Pixel Photo](https://pixel-photo-app.herokuapp.com/) - SmoothieDB is a Python App deployed to Heroku
+[Pixel Photo](https://pixel-photo-app.herokuapp.com/) - Pixel Photo is a Python App using the Django framework and deployed to Heroku
 
 <hr/>
 
@@ -121,7 +121,7 @@ Check out version control for commit steps during development.
 #### Content
 - All photos are sourced from a license-free, free of charge stock photography website - [Free stock photos · Pexels](https://www.pexels.com/)
 
-- Any pther information is fictional
+- All other information is fictional
 
 #### Media
 - The Pixel Photo logo is designed by the developer Barry Cunningham
@@ -130,4 +130,4 @@ Check out version control for commit steps during development.
 
 - The idea for Pixel Photo is my own.
 
-- I received much support from Code Institute Tutors and from the Code Institute Slack community and am very greatful for same.
+- I received much support from Code Institute Tutors and from the Code Institute Slack community and am very grateful for same.
