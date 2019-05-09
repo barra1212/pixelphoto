@@ -14,6 +14,9 @@ import os
 
 if os.path.exists('env.py'):
     import env
+    
+import dj_database_url
+
 
 # GMAIL    
 from email_info import EMAIL_USE_TLS, EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT
@@ -103,6 +106,8 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 
 # Password validation

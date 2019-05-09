@@ -5,6 +5,12 @@
     <form method="post" action="{% url 'register' %}" class="accountform">
         <fieldset class="form-group">
             <legend>Create a new account</legend>
+            
+                <button type="submit" class="btn btn-block btn-danger" onclick="style.display='none';">
+                    <i class="fas fa-times-circle"></i>&nbsp;
+                    ATTENTION: Use a <u>real</u> email address. This is where your high resolution image purchases will be sent to.
+                </button>
+
             <p>Already got an account? <a href="{% url 'login' %}">Sign In</a></p>
             {% csrf_token %}
             {{ user_form | as_bootstrap }}
