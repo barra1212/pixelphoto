@@ -64,7 +64,8 @@ def checkout(request):
                     email.body = "The high resolution image " + product.name + " you bought is attached to this email.\nThanks for your order, see you next time.\nPIXEL Photo"
                     email.from_email = settings.EMAIL_HOST_USER
                     email.to = [request.user.email]
-                    email.attach_file("media/" + str(product.originalimage))
+                    #C9 SETTING - email.attach_file("media/" + str(product.originalimage))
+                    email.attach_file(product.originalimage.url)
                     email.send()
                 
                 request.session['cart'] = {}
