@@ -61,10 +61,11 @@ def checkout(request):
                     # Email to customer including the high resolution file of the image they purchased as attachment
                     email = EmailMessage()
                     email.subject = "New Image " + product.name + " purchased from Pixel Photo"
-                    email.body = "The high resolution image " + product.name + " you bought is attached to this email.\nThanks for your order, see you next time.\nPIXEL Photo"
+                    # email.body = "The high resolution image " + product.name + " you bought is attached to this email.\nThanks for your order, see you next time.\nPIXEL Photo"
+                    email.body = "Download here " + product.originalimage.url
                     email.from_email = settings.EMAIL_HOST_USER
                     email.to = [request.user.email]
-                    email.attach_file("media/" + str(product.originalimage))
+                    #C9 SETTING - email.attach_file("media/" + str(product.originalimage))
                     # email.attach_file(product.originalimage.url)
                     email.send()
                 
