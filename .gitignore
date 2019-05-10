@@ -3,3 +3,9 @@
 .~c9
 __pycache__
 env.py
+requirements.1.txt
+*.png
+*.jpg
+*.svg
+static/
+media-BEFORE-S3/
