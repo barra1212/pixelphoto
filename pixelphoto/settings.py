@@ -99,25 +99,29 @@ WSGI_APPLICATION = 'pixelphoto.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 
-# if "DATABASE_URL" in os.environ:
-#     print("Using postgres!")
-#     DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
-# else:
-#     print("Database URL not found. Using SQLite instead")
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#         }
-#     }
+if "DATABASE_URL" in os.environ:
+    print("Using postgres!")
+    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+else:
+    print("Database URL not found. Using SQLite instead")
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
     
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# SQLITE3
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+# POSTGRES
+# DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 
     

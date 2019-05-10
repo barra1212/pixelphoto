@@ -62,7 +62,7 @@ Proposed layout -
 
 - [Bootstrap CSS](https://bootswatch.com/3/flatly/) - This App utilises HTML to construct pages and is styled with bootstrap CSS. Specifically Bootswatch Flatly theme is used throughout and further styled with the file - /static/css/custom.css
 
-- [JQuery](https://jquery.com) - The project uses **JQuery** to enable Boostrap features
+- [JQuery](https://jquery.com) - The project uses JQuery to enable Boostrap features
 
 - [Javascript](https://www.javascript.com/) - The App uses Javascript to trigger some features of Bootstrap CSS, i.e. sidenav flyout and dropdown select for categories.
 

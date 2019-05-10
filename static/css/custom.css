@@ -29,7 +29,7 @@ body {
 
 .product:hover {
     transform: scale(1.05);
-    background-image: url('{{ MEDIA_URL }}{{ product.image }}');
+    background-image: url('{{ product.image.url }}');
 }
 
 caption p {
