@@ -1,5 +1,3 @@
-/* BELOW FROM LESSON */
-
 body {
    padding-bottom: 150px;
    margin: 0px;
@@ -10,30 +8,6 @@ body {
 	padding: 0;
 }
 
-.toast {
-    border: none;
-    left: 50%;
-    position: fixed;
-    transform: translate(-50%, 0px);
-    z-index: 9999;
-}
-
-.toast-header {
-    background-color: #95c11f;
-    min-width: 330px;
-    padding-top: 12px;
-    min-height: 50px;
-    color: #FFFFFF;
-}
-
-/*.icon-bar {*/
-/*    background-color: #fff;*/
-/*}*/
-
-/*.accountform {*/
-/*    padding-top: 20px;*/
-/*}*/
-
 .badge {
     padding-left: 9px;
     padding-right: 9px;
@@ -41,11 +15,6 @@ body {
     -moz-border-radius: 9px;
     border-radius: 9px;
 }
-
-/*.label-warning[href],*/
-/*.badge-warning[href] {*/
-/*    background-color: #c67605;*/
-/*}*/
 
 .product {
     transition: all .2s ease-in-out;
@@ -85,14 +54,13 @@ caption p {
 
 .product-description {
     min-height: 40px;
+    text-align: center;
 }
 
 form {
     padding-top: 5px;
     padding-bottom: 5px;
 }
-
-/* MY STYLES */
 
 .navbar {
     padding: 10px 25px 15px 25px;
@@ -130,10 +98,6 @@ form {
 h1,h2,h3,h4,h5,h6 {
     text-align: center;
     color: #444444;
-}
-
-h2 {
-    text-align: left;
 }
 
 h4 {
