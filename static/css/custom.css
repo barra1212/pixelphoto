@@ -1,13 +1,31 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* BODY */
+
+/* ALLOW ROOM FOR STICKY FOOTER */
 body {
    padding-bottom: 150px;
    margin: 0px;
 }
 
+/* DELETE DEFAULT BOOTSTRAP MARGIN AND PADDING */
 .container-fluid-margin {
 	margin: 0;
 	padding: 0;
 }
 
+
+/***************************************************************/ 
+
+
+/* NAVBAR */
+
+.navbar {
+    padding: 10px 25px 15px 25px;
+}
+
+/* STYLE OF BADGE TO INDICATE ITEMS IN CART */
 .badge {
     padding-left: 9px;
     padding-right: 9px;
@@ -16,6 +34,79 @@ body {
     border-radius: 9px;
 }
 
+
+/***************************************************************/ 
+
+
+/* MESSAGES HEADER */
+
+.alert,.alert-success {
+    background-color: rgba(149, 193, 31, 0.9);
+    border-radius: 0px;
+    margin: 0;
+}
+
+
+/***************************************************************/ 
+
+
+/* SEARCH */
+
+/* BESPOKE MARGIN ABOVE & BELOW SEARCH BOX */
+.search {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+/***************************************************************/ 
+
+
+/* FORMS */
+
+/* GREEN OPAQUE BACKGROUND BEHIND FORMS */
+.green-opaque {
+    background-color: rgba(149, 193, 31, 0.2);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 50px auto;
+}
+
+/* PADDING */
+form {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+
+
+/***************************************************************/ 
+
+
+/* SHOP */
+
+/* BOOTSTRAP PANEL BESPOKE */
+.panel-body {
+    height: 100%;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.panel {
+    margin-bottom: 20px;
+}
+
+
+/* DONT THINK I NEED THIS */
+/*
+.card {
+    margin: 10px;
+}
+*/
+
+
+/* PRODUCT STYLING */
 .product {
     transition: all .2s ease-in-out;
     transform: scale(1);
@@ -27,72 +118,30 @@ body {
     margin: 0 auto;
 }
 
+/* MAGNIFY ANIMATE PRODUCT IMAGE ON HOVER */
 .product:hover {
     transform: scale(1.05);
     background-image: url('{{ product.image.url }}');
 }
 
-caption p {
-    word-wrap: break-word;
+/* PRODUCT DESCRIPTION MIN HEIGHT TO MAINTAIN NEAT ALIGNMENT */
+.product-description {
+    min-height: 40px;
+    text-align: center;
 }
 
+/* BESPOKE MARGIN FOR GRIDS OF MULTIPLE PRODUCTS */
 .row.row-flex {
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
 }
 
-.panel-body {
-    height: 100%;
-    padding: 20px;
-    border: 1px solid #ddd;
-}
 
-.panel {
-    margin-bottom: 20px;
-}
+/***************************************************************/ 
 
-.product-description {
-    min-height: 40px;
-    text-align: center;
-}
 
-form {
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.navbar {
-    padding: 10px 25px 15px 25px;
-}
-
-.search {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.card {
-    margin: 10px;
-}
-
-.white-opaque {
-    background-color: rgba(255, 255, 255, 0.75);
-    border-radius: 15px;
-    padding: 25px;
-    margin: 50px auto;
-}
-
-.page-footer {
-    background-color: #222222;
-    color: #FFFFFF;
-}
-
-.alert,.alert-success {
-    background-color: rgba(149, 193, 31, 0.9);
-    border-radius: 0px;
-    margin: 0;
-}
-
+/* TYPOGRAPHY * /
 
 /*CUSTOM STYLING FOR HEADINGS */
 h1,h2,h3,h4,h5,h6 {
@@ -100,11 +149,13 @@ h1,h2,h3,h4,h5,h6 {
     color: #444444;
 }
 
+/*CUSTOM GREEN H4 */
 h4 {
     color: #95c11f;
     margin-top: 10px;
 }
 
+/*CUSTOM STYEL OF UPVOTE SCORE WHEN A SCORE IS PRESENT */
 .upvote {
     color: #ea5b0c;
     text-shadow: 0 0 15px #ea5b0c;
@@ -112,11 +163,24 @@ h4 {
     font-weight: bold;
 }
 
+
+/***************************************************************/ 
+
+
+/* FOOTER */
+.page-footer {
+    background-color: #222222;
+    color: #FFFFFF;
+}
+
 /* SOCIAL ICON STYLING */
 .social {
     padding: 10px;
     height: 50px;
 }
+
+
+/***************************************************************/ 
 
 
 /* MEDIA QUERIES */
