@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
-if os.path.exists('env.py'):
-    import env
+# if os.path.exists('env.py'):
+#     import env
 
 import dj_database_url
 
@@ -37,7 +37,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'pixel-photo-app.herokuapp.com']
 

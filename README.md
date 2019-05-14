@@ -6,7 +6,7 @@
 
 Pixel Photo is a stock photography website for all user disciplines. Whether you are a design agency, a marketing agency, a local print works or a student, all users can get access to premium stock photography at a fraction of the expected price.
 
-Many marketing agencies and designers need access to quality stock photography to speed up proofing processs (while not compromising on the look). And to complete final projects with high resolution files for print. Currently websites like iStock, Shutterstock and DepositPhotos cater for this need but at high prices.
+Many marketing agencies and designers need access to quality stock photography to speed up proofing process (while not compromising on the look). And to complete final projects with high resolution files for print. Currently websites like iStock, Shutterstock and DepositPhotos cater for this need but at high prices.
 
 Pixel Photo sells premium quality, high resolution photography without any licensing restrictions for €1 per image.
 
@@ -31,6 +31,10 @@ The deployed Pixel Photo website is here - [pixel-photo-app.herokuapp.com](https
 #### Design Considerations
 
 The design is modern and minimalist ensuring a great UX for creative types as well as the general public. Minimal use of secondary colour helps it stand out more. Site is mainly designed in monotone.
+
+#### Wireframing
+ 
+I used Adobe Photoshop and Illustrator to envision my website and create mockups, logo and brand identity.
 
 #### Responsive Design
 
@@ -98,7 +102,7 @@ Proposed layout -
 #### User Stories addressed
 
 - The App addresses the needs/wants of submitted user stories admirably.
-- The App is easy to use and images can be searched/foudn with ease.
+- The App is easy to use and images can be searched/found with ease.
 - The App is child friendly and easy to use for all ages.
 
 #### Design
@@ -127,26 +131,71 @@ W3 best practice guidelines are used throughout to ensure my code as clean and e
 - REGISTRATION FORM -
     - The form will not submit without data in all fields. Furthermore, the Email field must include an @ symbol thus coaxing the user in to input a genuine email address and both password fields need to match.
 
+#### AWS issue, specific to my App
+
+I have used an AWS S3 bucket to store my products/images and also my static files. The live roots of these files can be revealed by using Developer Tools in a browser.
+
+However I was unable to make my checkout/email function work as desired when using AWS.
+I was unable to attach a high resolution image stored on AWS to an email to my customer.
+
+`email.attach_file(product.originalimage.url)`
+
+This code caused an error and the transaction failed, but with `DEBUG = True` not before it revealed the exact path to the high resolution file and could easily be used to get the exact path to all high resolution files.
+
+`email.attach_file(“media/” + str(product.originalimage))`
+
+So my images (watermarked and high resolution) remain as they were in production in a top level media folder On successful transaction the high resolution image is sent as an attachment in individual emails to each customer.
+
+This is something I must research and keep an eye on to see if there’s a solution to use files saves on AWS as attachments in an application email.
+
+<hr/>
 
 ## Deployment
 
-Pixel Photo App is built in Cloud9 and all code pushed to a Github Respository.
+Pixel Photo App is a Python application built in Cloud9 and periodically committed to a Github Repository which in the latter stages of development auto deployed to Heroku.
 
 Check out version control for commit steps during development.
 
-`git add .` - Add all files to commit
+Before pushing to Heroku, Travis Continuous Integration was connected to the Github Repository. This is very useful in highlighting flaws in your construction or potential errors before deployment. e.g. some dependencies auto added to your requirements.txt file in the Cloud9 environment may not be required (or not work) in a live environment like Heroku and Travis will spot these for you. You can upgrade or delete as necessary.
 
-`git status` - I like to call git status to examine file changes before commit
+A Github Respository was initialized `git init` very early in production so all sensitive environment variables were saved in and retrieved from my env.py file at the top level of the project. This file was listed in a `.gitignore` file thus ensuring that the sensitive credentials remain private and never pushed to the public repository.
+- Django SECRET_KEY
+- Stripe KEYS
+- Gmail CREDENTIALS
+- PostgreSQL live DB URL
+- Amazon AWS KEYS
 
-`git commit -m "A meaningful commit statement"` - Call your commit
+During production on Cloud9 a local SQLite3 database was used and media images and static files were stored locally.
 
-`git push` - Push to your repository. Enter credentials
+The live site on Heroku uses a cloud based PostgreSQL database and media images and static files are stored on Amazon Simple Storage Service (Amazon S3), an object storage service that offers industry-leading scalability, data availability, security, and performance. 
 
-`git push heroku master` - Push to Heroku
+A number of key steps are required in this deployment.
 
-`heroku ps:scale web=1` - Start dynos, thus running the App
+While working in Cloud9, all environment variables are accessed through settings.py
+`if os.path.exists(‘env.py’):`
+`    import env`
+All these environment variables to be added as Config Vars to Heroku App before deployment.
+This code is #commented out# of deployed settings.py file.
 
-[Pixel Photo](https://pixel-photo-app.herokuapp.com/) - Pixel Photo is a Python App using the Django framework and deployed to Heroku
+A new database, local and live configuration was added to settings.py file, so that if the DB is presented in environment (i.e. PostgreSQL on Heroku) it is used, and if not, then the App reverts to use the local SQLite3 Cloud9 settings.
+
+![Local/Live Database Configuration](documentation/database.png)
+
+It is essential to `python3 manage.py createsuperuser` and `python3 manage.py makemigrations` and `python3 manage.py migrate` on first use of this new live database.
+
+IMPORTANT
+
+Heroku web applications require a `Procfile`
+
+And a Procfile requires `gunicorn`
+
+`pip install gunicorn` and list it in your requirements.txt as well.
+
+Create a new top level file called `Procfile` with a capital “P” and paste `web: gunicorn myproject.wsgi` into it and save.
+
+This file is used to explicitly declare your application’s process types and entry points which are retrieved from your wsgi.py file.
+
+You can view the deployed App here - [Pixel Photo](https://pixel-photo-app.herokuapp.com/)
 
 <hr/>
 
@@ -164,4 +213,6 @@ Check out version control for commit steps during development.
 
 - The idea for Pixel Photo is my own.
 
-- I received much support from Code Institute Tutors and from the Code Institute Slack community and am very grateful for same.
+- I received support from Code Institute Tutors and from the Code Institute Slack community and am very grateful for same.
+
+- Specifically I received support from Joke Heyndels Code Institute to write a user’s purchases in their checkout cart into a new dictionary `id_dict`. This enabled the function to iterate through the cart and send an individual email for each high resolution image purchased to the user. Thanks @jowings
