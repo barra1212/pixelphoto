@@ -62,12 +62,18 @@ def checkout(request):
                     email = EmailMessage()
                     email.subject = "New Image " + product.name + " purchased from Pixel Photo"
                     email.body = "The high resolution image " + product.name + " you bought is attached to this email.\nThanks for your order, see you next time.\nPIXEL Photo"
-                    # email.body = "Download here " + product.originalimage.url
                     email.from_email = settings.EMAIL_HOST_USER
                     email.to = [request.user.email]
                     email.attach_file("media/" + str(product.originalimage))
-                    # email.attach_file(product.originalimage.url)
                     email.send()
+
+                    
+                    # ALTERNATIVE IF USING AWS
+                    # NOT BETTER THAN USING LOCAL MEDIA STORAGE
+                    # email.body = "Download here " + product.originalimage.url
+                    # email.attach_file(product.originalimage.url)
+                    # ALTERNATIVE IF USING AWS
+
                 
                 request.session['cart'] = {}
                 return redirect(reverse('products'))

@@ -14,6 +14,10 @@
 
 {% block content %}
 
+<!-- PAGE HEADING -->
+<h3 class="cart-heading">Checkout</h3>
+
+<!-- PAGE SPECIFIC DATABASE ITEMS -->
 <div class="row row-flex">
     {% for item in cart_items %}
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 display panel">
@@ -30,19 +34,23 @@
     {% endfor %}
 </div>
 
+<!-- TOTAL AND CHECKOUT BUTTON -->
 <div class="container">
     <div class="row">
         <h4>Total &euro;{{ total }}</h4>
     </div>
 </div>
 
+<!-- FORM -->
 <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
     <legend>Payment Details</legend>
 
+    <!-- MESSAGES -->
     <div id="credit-card-errors" style="display: none;">
         <div id="alert-message block-message error" id="stripe-error-message"></div>
     </div>
 
+    <!-- CUSTOMER DETAILS FORM -->
     <div class="container">
       <div class="row">
         <div class="form-group col">
@@ -55,9 +63,11 @@
     </div>
 
     {% csrf_token %}
+    <!-- CHECKOUT BUTTON -->
     <div class="form-group col-md-12">
         <input class=" btn btn-success" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
     </div>
+    
 </form>
 
 {% endblock %}

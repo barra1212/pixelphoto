@@ -1,6 +1,10 @@
 @charset "UTF-8";
 /* CSS Document */
 
+
+/***************************************************************/ 
+
+
 /* BODY */
 
 /* ALLOW ROOM FOR STICKY FOOTER */
@@ -62,6 +66,18 @@ body {
 /***************************************************************/ 
 
 
+/* HOME PAGE 3 x MODULES */
+
+/* CUSTOM CARD CLASS SPACING */
+
+.card {
+    margin: 10px;
+}
+
+
+/***************************************************************/ 
+
+
 /* FORMS */
 
 /* GREEN OPAQUE BACKGROUND BEHIND FORMS */
@@ -96,15 +112,6 @@ form {
 .panel {
     margin-bottom: 20px;
 }
-
-
-/* DONT THINK I NEED THIS */
-/*
-.card {
-    margin: 10px;
-}
-*/
-
 
 /* PRODUCT STYLING */
 .product {
@@ -155,7 +162,12 @@ h4 {
     margin-top: 10px;
 }
 
-/*CUSTOM STYEL OF UPVOTE SCORE WHEN A SCORE IS PRESENT */
+/*CUSTOM CART HEADING */
+.cart-heading {
+    margin-top: 20px;
+}
+
+/*CUSTOM STYLE OF UPVOTE SCORE WHEN A SCORE IS PRESENT */
 .upvote {
     color: #ea5b0c;
     text-shadow: 0 0 15px #ea5b0c;

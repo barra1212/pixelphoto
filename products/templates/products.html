@@ -18,6 +18,7 @@
   </div>
 </div>
 
+<!-- A MINI CATEGORY MENU -->
 <div class="row search">
   <div class="col-md-12 text-center">
     <a href="{% url 'products' %}">All Images</a>&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -26,8 +27,11 @@
     <a href="{% url 'products_list_women' %}">Women</a>
   </div>
 </div>
+
+<!-- PAGE HEADING -->
 <h3>All Images</h3>
 
+<!-- PAGE SPECIFIC DATABASE ITEMS -->
 <div class="row row-flex">
     {% for product in products %}
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 display panel">
@@ -84,6 +88,7 @@
     {% endfor %}
 </div>
 
+<!-- PAGINATION AS REQUIRED -->
 <div class="pagination">
     <span class="step-links">
         {% if products.has_previous %}
