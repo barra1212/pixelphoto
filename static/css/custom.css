@@ -105,6 +105,13 @@ h4 {
     margin-top: 10px;
 }
 
+.upvote {
+    color: #ea5b0c;
+    text-shadow: 0 0 15px #ea5b0c;
+    font-size: 25px;
+    font-weight: bold;
+}
+
 /* SOCIAL ICON STYLING */
 .social {
     padding: 10px;

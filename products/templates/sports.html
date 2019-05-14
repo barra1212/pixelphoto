@@ -59,7 +59,11 @@
                       </form>
                     </div>
                     <div class="col">
+                      {% if product.upvotes > 0 %}
+                        <h4 class="upvote">{{ product.upvotes }}</h4>
+                        {% else %}
                         <h4>{{ product.upvotes }}</h4>
+                      {% endif %}
                     </div>
                     <div class="col">
                       <form method="post" action="{% url 'downvote' product.id %}">

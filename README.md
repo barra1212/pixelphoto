@@ -10,6 +10,12 @@ Many marketing agencies and designers need access to quality stock photography t
 
 Pixel Photo sells premium quality, high resolution photography without any licensing restrictions for €1 per image.
 
+Unregistered users can browse all images on the site manually and by category. Users can also search for images. Unregistered users can submit a contact form to the site owner to submit queries prior to registration/purchase.
+
+Registered users can perform all the same tasks as unregistered users, but they can also upvote/downvote products, thus (overtime) identifying to other registered users the more popular images within a category. Registered users can also purchase images via Stripe and have a high resolution file sent direct to their registered email address.
+
+The deployed Pixel Photo website is here - [pixel-photo-app.herokuapp.com](https://pixel-photo-app.herokuapp.com/)
+
 <hr/>
 
 ## UX
@@ -42,12 +48,25 @@ Proposed layout -
 
 ## Features
 
+#### Responsive Design
+- Responsive design across all browsers for best possible UX.
+
+#### Contact Form
+- A contact form can be used by any user to submit an enquiry to the site owner. Users do not need to be signed in to use this form.
+
+#### Products database
+- Products and categories are stored in a MySQL relational database. SQLite3 was used locally in production, before migrating to cloud based PostgreSQL in live environment on Heroku. Users do not need to be signed in to browse images/products.
+
 #### User Authentication
-- In order to purchase images, users will have to be signed up to the website.
-- Different menu items will display depenedent on whether user is signed in or not.
+- In order to purchase images, and/or upvote/downvote images, users need to be logged in to the website. If a user is not logged in, then Register and Log In are displayed, and upvote/downvote buttons and scores are not visible to them. If a user is logged in, then Profile and Log Out are displayed, and they can upvote/downvote images and see image scores.
 
 #### eCommerce
 - Stripe payment plugin is installed to handle all transactions.
+
+#### Cart & Checkout
+- The Cart App stores any selected images in session and adds them to the cart. It is clear to the user when an image is in their cart because it will appear in the Navbar. When the cart is empty, it does not appear in the Navbar.
+- The Checkout function requires a user to be signed in using the `@login_required` decorator. If a user tries to transact, they will need to register or sign in.
+- On successful transaction, the checkout function retrieves the corresponding high resolution image `media/originalimages/image.jpg` of the watermarked image they have chosen, and emails the file directly to them.
 
 #### Possible features to implement
 - With further learning I would extend Django the user model, allowing some users to purchase only and others to upload and sell their own images.
@@ -56,19 +75,25 @@ Proposed layout -
 
 ## Technologies Used
 
-- [Python](https://www.python.org/) - Pixel Photo is Python App
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
 
-- [Django](https://www.djangoproject.com/) - Django is a Python-based free and open-source web framework, which follows the model-view-template architectural pattern
+- [CSS3](http://www.css3.info/)
 
-- [Bootstrap CSS](https://bootswatch.com/3/flatly/) - This App utilises HTML to construct pages and is styled with bootstrap CSS. Specifically Bootswatch Flatly theme is used throughout and further styled with the file - /static/css/custom.css
+- [Javascript](https://www.javascript.com/)
 
-- [JQuery](https://jquery.com) - The project uses JQuery to enable Boostrap features
+- [JQuery](https://jquery.com)
 
-- [Javascript](https://www.javascript.com/) - The App uses Javascript to trigger some features of Bootstrap CSS, i.e. sidenav flyout and dropdown select for categories.
+- [Python](https://www.python.org/)
+
+- [Django](https://www.djangoproject.com/)
+
+- [Stripe](https://stripe.com/ie)
+
+- [Bootstrap CSS](https://bootswatch.com/3/flatly/)
 
 <hr/>
 
-## Testing
+## Manual Testing
 
 #### User Stories addressed
 
@@ -86,13 +111,22 @@ Proposed layout -
 
 #### Code
 
+W3 best practice guidelines are used throughout to ensure my code as clean and error free as possible.
+
 - HTML code checked with validator.W3.org returns -
     - Document checking completed. No errors or warnings to show.
 
 - CSS code checked with jigsaw.w3.org/css-validator returns -
-    - Congratulations! No Error Found.
+    - Minor errors found in Bootstrap file.
 
-- Javascript checked through JSHint.com returns no errors
+#### Forms
+
+- CONTACT FORM -
+    - The form will not submit without data in all fields. Furthermore, the Email field must include an @ symbol thus coaxing the user in to input a genuine email address.
+
+- REGISTRATION FORM -
+    - The form will not submit without data in all fields. Furthermore, the Email field must include an @ symbol thus coaxing the user in to input a genuine email address and both password fields need to match.
+
 
 ## Deployment
 
