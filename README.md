@@ -177,7 +177,9 @@ While working in Cloud9, all environment variables are accessed through settings
 All these environment variables to be added as Config Vars to Heroku App before deployment.
 This code is #commented out# of deployed settings.py file.
 
-A new database, local and live configuration was added to settings.py file, so that if the DB is presented in environment (i.e. PostgreSQL on Heroku) it is used, and if not, then the App reverts to use the local SQLite3 Cloud9 settings.
+A new database configuration was added to settings.py file for in production and deployed states.
+If the database is present in the environment (i.e. PostgreSQL on Heroku), then it is used.
+If not, then the App reverts to use the local production SQLite3 database.
 
 ![Local/Live Database Configuration](documentation/database.png)
 
