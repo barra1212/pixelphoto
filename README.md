@@ -59,7 +59,7 @@ Proposed layout -
 - A contact form can be used by any user to submit an enquiry to the site owner. Users do not need to be signed in to use this form.
 
 #### Products database
-- Products and categories are stored in a MySQL relational database. SQLite3 was used locally in production, before migrating to cloud based PostgreSQL in live environment on Heroku. Users do not need to be signed in to browse images/products.
+- Products and categories are stored in a MySQL relational database. SQLite3 was used locally in development, before migrating to cloud based PostgreSQL in live environment on Heroku. Users do not need to be signed in to browse images/products.
 
 #### User Authentication
 - In order to purchase images, and/or upvote/downvote images, users need to be logged in to the website. If a user is not logged in, then Register and Log In are displayed, and upvote/downvote buttons and scores are not visible to them. If a user is logged in, then Profile and Log Out are displayed, and they can upvote/downvote images and see image scores.
@@ -144,7 +144,7 @@ This code caused an error and the transaction failed, but with `DEBUG = True` no
 
 `email.attach_file(“media/” + str(product.originalimage))`
 
-So my images (watermarked and high resolution) remain as they were in production in a top level media folder On successful transaction the high resolution image is sent as an attachment in individual emails to each customer.
+So my images (watermarked and high resolution) remain as they were in development in a top level media folder. On successful transaction the high resolution image is sent as an attachment in individual emails to each customer.
 
 This is something I must research and keep an eye on to see if there’s a solution to use files saves on AWS as attachments in an application email.
 
@@ -158,14 +158,17 @@ Check out version control for commit steps during development.
 
 Before pushing to Heroku, Travis Continuous Integration was connected to the Github Repository. This is very useful in highlighting flaws in your construction or potential errors before deployment. e.g. some dependencies auto added to your requirements.txt file in the Cloud9 environment may not be required (or not work) in a live environment like Heroku and Travis will spot these for you. You can upgrade or delete as necessary.
 
-A Github Respository was initialized `git init` very early in production so all sensitive environment variables were saved in and retrieved from my env.py file at the top level of the project. This file was listed in a `.gitignore` file thus ensuring that the sensitive credentials remain private and never pushed to the public repository.
+A Github Respository was initialized `git init` very early in development so all sensitive environment variables were saved in and retrieved from my env.py file at the top level of the project. This file was listed in a `.gitignore` file thus ensuring that the sensitive credentials remain private and never pushed to the public repository.
+
+You should save and secure your sensitive data in a similar manner. Never push to public depository.
+
 - Django SECRET_KEY
 - Stripe KEYS
 - Gmail CREDENTIALS
 - PostgreSQL live DB URL
 - Amazon AWS KEYS
 
-During production on Cloud9 a local SQLite3 database was used and media images and static files were stored locally.
+During development on Cloud9 a local SQLite3 database was used and media images and static files were stored locally.
 
 The live site on Heroku uses a cloud based PostgreSQL database and media images and static files are stored on Amazon Simple Storage Service (Amazon S3), an object storage service that offers industry-leading scalability, data availability, security, and performance. 
 
@@ -177,15 +180,17 @@ While working in Cloud9, all environment variables are accessed through settings
 All these environment variables to be added as Config Vars to Heroku App before deployment.
 This code is #commented out# of deployed settings.py file.
 
-A new database configuration was added to settings.py file for in production and deployed states.
+A new database configuration was added to settings.py file for in development and deployed states.
 If the database is present in the environment (i.e. PostgreSQL on Heroku), then it is used.
-If not, then the App reverts to use the local production SQLite3 database.
+If not, then the App reverts to use the local development SQLite3 database.
 
 ![Local/Live Database Configuration](documentation/database.png)
 
 It is essential to `python3 manage.py createsuperuser` and `python3 manage.py makemigrations` and `python3 manage.py migrate` on first use of this new live database.
 
 IMPORTANT
+
+This Django App will require a number of dependencies in order to work. Use the command `pip install -r requirements.txt` to list them and in turn have them installed in the environment during deployment.
 
 Heroku web applications require a `Procfile`
 
