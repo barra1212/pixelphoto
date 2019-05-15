@@ -16,7 +16,7 @@ Registered users can perform all the same tasks as unregistered users, but they 
 
 The deployed Pixel Photo website is here - [pixel-photo-app.herokuapp.com](https://pixel-photo-app.herokuapp.com/)
 
-<hr/>
+![Pixel Photo App Responsive Design](documentation/responsive-pixel-photo-app.png)
 
 ## UX
 
