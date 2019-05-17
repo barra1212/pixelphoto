@@ -38,6 +38,10 @@ body {
     border-radius: 9px;
 }
 
+/* ADJUST NAVBAR TOGGLER POSITION */
+.navbar-toggler {
+    margin-top: 8px;
+}
 
 /***************************************************************/ 
 
